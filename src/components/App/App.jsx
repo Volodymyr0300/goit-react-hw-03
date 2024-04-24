@@ -1,14 +1,19 @@
-import { Formik, Form, Field } from "formik";
-import * as Yup from "yup";
 import css from "./App.module.css";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import initialContacts from "../../contacts.json";
 
 export default function App() {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const storedContacts = localStorage.getItem("contacts");
+    return storedContacts ? JSON.parse(storedContacts) : initialContacts;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   const [filter, setFilter] = useState("");
 

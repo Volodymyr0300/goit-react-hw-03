@@ -1,4 +1,3 @@
-import { Field, Formik } from "formik";
 import css from "./SearchBox.module.css";
 
 export default function SearchBox({ value, onFilter }) {
