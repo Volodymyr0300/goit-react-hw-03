@@ -14,7 +14,6 @@ export default function ContactForm({ onAddContact }) {
   const numberFieldId = useId();
 
   const contactId = nanoid();
-  console.log(contactId);
 
   const handleSubmit = (values, actions) => {
     console.log(values);
