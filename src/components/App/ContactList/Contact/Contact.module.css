@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px;
+  gap: 5px;
+  justify-content: space-between;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+}
+
+.userContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px;
+}
+
+.phoneContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px;
+}
+
+.userIcon {
+}
+
+.userName {
+}
+
+.phoneIcon {
+}
+
+.userPhone {
+}
+
+.btnContainer {
+  padding: 5px;
+}
+
+.btns {
+}
