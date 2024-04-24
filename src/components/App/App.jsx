@@ -10,6 +10,8 @@ import initialContacts from "../../contacts.json";
 export default function App() {
   const [contacts, setContacts] = useState(initialContacts);
 
+  const [filter, setFilter] = useState("");
+
   const addContact = (newContact) => {
     setContacts((initialContacts) => {
       return [...initialContacts, newContact];
@@ -17,18 +19,24 @@ export default function App() {
   };
 
   const deleteContact = (contactId) => {
-    console.log(contactId);
     setContacts((contacts) => {
       return contacts.filter((contact) => contact.id !== contactId);
     });
   };
 
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAddContact={addContact} />
-      <SearchBox />
-      <ContactList contacts={contacts} onDeleteContact={deleteContact} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList
+        contacts={filteredContacts}
+        onDeleteContact={deleteContact}
+      />
     </div>
   );
 }

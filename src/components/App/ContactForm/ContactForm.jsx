@@ -4,6 +4,17 @@ import css from "./ContactForm.module.css";
 import { useId } from "react";
 import { nanoid } from "nanoid";
 
+const FeedbackSchema = Yup.object().shape({
+  username: Yup.string()
+    .min(3, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required"),
+  number: Yup.string()
+    .min(3, "Too short")
+    .max(50, "Too long")
+    .required("Required"),
+});
+
 const initialValues = {
   username: "",
   number: "",
@@ -16,7 +27,6 @@ export default function ContactForm({ onAddContact }) {
   const contactId = nanoid();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
     onAddContact({
       id: contactId,
       name: values.username,
@@ -27,7 +37,11 @@ export default function ContactForm({ onAddContact }) {
 
   return (
     <>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={FeedbackSchema}
+      >
         <Form className={css.form}>
           <div className={css.formGroup}>
             <label htmlFor={usernameFieldId}>Name</label>

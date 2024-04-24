@@ -5,7 +5,6 @@ export default function Contact({
   data: { id, name, number },
   onDeleteContact,
 }) {
-  //   console.log(contact.data);
   return (
     <div className={css.container} id={id}>
       <div className={css.dataContainer}>
